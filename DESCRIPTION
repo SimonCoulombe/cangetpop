@@ -19,3 +19,5 @@ Remotes: github::mountainMath/tongfen
 RoxygenNote: 7.1.1
 URL: https://github.com/SimonCoulombe/cangetpop
 BugReports: https://github.com/SimonCoulombe/cangetpop/issues
+Depends: 
+    R (>= 2.10)

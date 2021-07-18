@@ -4,7 +4,7 @@
 \alias{get_populations_from_polygon}
 \title{get_populations_from_polygon   returns the canadian population within a polygon}
 \usage{
-get_populations_from_polygon(sf_tibble)
+get_populations_from_polygon(sf_tibble, use_cancensus = FALSE)
 }
 \arguments{
 \item{sf_tibble}{}

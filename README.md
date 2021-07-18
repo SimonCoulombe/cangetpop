@@ -22,14 +22,15 @@ This is a basic example which shows you how to solve a common problem:
 ``` r
 suppressMessages(
   suppressWarnings({
-    library(dplyr)
+    
     library(magrittr)
     library(cangetpop)
-    library(osmdata)
-    library(sf)
-    library(purrr)
-    library(cancensus)
-    library(mapview)
+    library(mapview) # pour cartes 
+    library(dplyr) # pour exemple ashton
+    library(osmdata) # pour exemple ashton
+    library(sf)  #pour exemple ashton 
+    library(purrr)  #pour exemple ashton 
+    
   })
 )
 ## basic example code
@@ -109,16 +110,16 @@ Voici les coordonnées des restaurants Ashton de Québec trouvées avec
 {osmdata}
 
 ``` r
-bb <- getbb("Quebec, QC")
+bb <- osmdata::getbb("Quebec, QC")
 
-x <- bb %>% opq() %>%
-  add_osm_feature(key= "name", value = c("ASHTON", "ASTHON"),
+x <- bb %>% osmdata::opq() %>%
+  osmdata::add_osm_feature(key= "name", value = c("ASHTON", "ASTHON"),
                   value_exact = FALSE, match_case = FALSE
   )%>%
-  osmdata_sf()
+  osmdata::osmdata_sf()
 
 ashton <- x$osm_points %>% 
-  filter(!(osm_id %in% c(1750439777,1750439789, 1750439808, 1750439833,  1750439845, 1616297363, 1616297367, 1616297399)))  %>% ## some restaurants have multiple points.. keep only one
+  dplyr::filter(!(osm_id %in% c(1750439777,1750439789, 1750439808, 1750439833,  1750439845, 1616297363, 1616297367, 1616297399)))  %>% ## some restaurants have multiple points.. keep only one
   dplyr::mutate(longitude = sf::st_coordinates(.)[,1],
                 latitude = sf::st_coordinates(.)[,2])
 
@@ -126,8 +127,8 @@ ashton <- x$osm_points %>%
 
 data0 <- ashton %>% 
   st_drop_geometry() %>% 
-  select(osm_id, latitude, longitude) %>% 
-  mutate( pouet = pmap(list(latitude, longitude, 1),
+  dplyr::select(osm_id, latitude, longitude) %>% 
+  dplyr::mutate( pouet = pmap(list(latitude, longitude, 1),
                        get_populations_from_lat_lon_radius)
   )
 
