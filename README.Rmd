@@ -1,5 +1,5 @@
 ---
-output: github_document
+output:   github_document
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -28,6 +28,14 @@ You can install cangetpop from github using
 ``` r
 devtools::install_github("simoncoulombe/cangetpop")
 ```
+
+
+IMPORTANT: make sure to get the development version of tongfen (0.3.2) from github using
+``` r
+devtools::install_github("mountainmath/tongfen")
+```
+The cran version (0.3.0) will return an error about "data.1" or something..
+
 
 ## Example
 
