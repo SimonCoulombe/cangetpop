@@ -15,6 +15,19 @@ You can install cangetpop from github using
 devtools::install_github("simoncoulombe/cangetpop")
 ```
 
+## Please install the {tongfen} package from github   
+
+If you get this error : 
+ *Error: Column `Group.1` not found in `.data`*
+ Then you should install the latest development version of the tongfen package from github (0.3.2, while CRAN has only 0.3.0)  :
+ ``` r
+devtools::install_github("mountainmath/tongfen")
+```
+
+ 
+ 
+ 
+
 ## Example
 
 This is a basic example which shows you how to solve a common problem:
