@@ -52,7 +52,7 @@ get_populations_from_polygon <- function(sf_tibble,use_cancensus = FALSE){
 
   populations_in_geometry <- tongfen::tongfen_estimate(
     sf_tibble,
-    census_data,
+    census_data %>% filter(!is.na(Population)),
     tongfen::meta_for_additive_variables("census_data", "Population")
   )
   return(populations_in_geometry)
